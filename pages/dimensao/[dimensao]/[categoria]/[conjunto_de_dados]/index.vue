@@ -1,0 +1,3 @@
+<template>
+	<TemplateDimensao />
+</template>
