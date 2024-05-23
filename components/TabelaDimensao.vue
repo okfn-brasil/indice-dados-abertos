@@ -86,7 +86,7 @@ onMounted(() => {
       <div class="conjunto-banner" v-if="!current.score">
         <div class="container-fluid wrap text-center">
           <h4 class="text-branco font-semibold">Este conjunto de dados não integra a pontuação do Índice nesta edição.</h4>
-          <div class="btn-tooltip big mt-0 cursor-pointer"><NuxtLink to="/#metodologia">Saiba mais na nota metodológica</NuxtLink></div>
+          <div class="btn-tooltip big mt-0 cursor-pointer"><a :href="'https://go.ok.org.br/odi2023-nota'" target="blank">Saiba mais na nota metodológica</a></div>
         </div>
       </div>
 
@@ -99,11 +99,11 @@ onMounted(() => {
         <p class="capital">{{tooltip.capital.nome}}</p>
         <template v-if="tooltip.d">
           <p class="ranking icon block" :data-dimensao="tooltip.d.label">{{tooltip.d.label}}</p>
-          <p class="label" :class="escalaGlobal(tooltip.capital.notas[tooltip.d.key])">{{Math.round(tooltip.capital.notas[tooltip.d.key])}}</p>
+          <p class="label" :class="escalaGlobal(Math.round(tooltip.capital.notas[tooltip.d.key]))">{{Math.round(tooltip.capital.notas[tooltip.d.key])}}</p>
         </template>
         <template v-if="tooltip.ranking">
           <p class="ranking" v-if="tooltip.ranking">{{tooltip.ranking+1}}ª posição no ranking</p>
-          <p class="label" :class="escalaGlobal(tooltip.capital.notas[current.key])">{{Math.round(tooltip.capital.notas[current.key])}}</p>
+          <p class="label" :class="escalaGlobal(Math.round(tooltip.capital.notas[current.key]))">{{Math.round(tooltip.capital.notas[current.key])}}</p>
         </template>
         <button class="btn-tooltip">explorar capital</button>
       </template>
@@ -131,9 +131,9 @@ onMounted(() => {
               <tr v-for="(c, index) in Object.values(capitais).sort((a,b)=>{return b.notas[current.key]-a.notas[current.key]})" :data-capital="c.key" class="hoverable">
                 <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="capital"><span><b>{{index+1}}º</b> {{c.nome}}</span></td>
                 <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="pontuacao"><span>{{Math.round(c.notas[current.key])}}</span></td>
-                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="nivel"><span class="label" :class="escalaGlobal(c.notas[current.key])">{{escalaGlobal(c.notas[current.key])}}</span></td>
+                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="nivel"><span class="label" :class="escalaGlobal(Math.round(c.notas[current.key]))">{{escalaGlobal(Math.round(c.notas[current.key]))}}</span></td>
                 
-                <td class="dimensao" v-for="d in current.children" :class="{'excluir':!d.score}" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,d:d})}, mousemove:tipM, mouseleave: ()=>{tip(false)} }"><span class="label" :class="escalaGlobal(c.notas[d.key])">{{Math.round(c.notas[d.key])}}</span></td>
+                <td class="dimensao" v-for="d in current.children" :class="{'excluir':!d.score}" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,d:d})}, mousemove:tipM, mouseleave: ()=>{tip(false)} }"><span class="label" :class="escalaGlobal(Math.round(c.notas[d.key]))">{{Math.round(c.notas[d.key])}}</span></td>
               
               </tr>
             </tbody>

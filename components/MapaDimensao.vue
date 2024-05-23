@@ -33,7 +33,7 @@
               <tr v-for="(c,index) in Object.values(capitais).sort((a,b)=>{return b.notas[current.key]-a.notas[current.key]})" v-on="{click:()=>{navigateTo('/capital/'+c.slug)}}" :data-capital="c.key" class="hoverable">
                 <td class="capital"><b>{{index+1}}º</b> {{c.nome}}</td>
                 <td class="pontuacao">{{c.notas[current.key]?.toFixed(0)}}</td>
-                <td class="nivel"><span class="label" :class="escalaGlobal(c.notas[current.key])">{{escalaGlobal(c.notas[current.key])}}</span></td>
+                <td class="nivel"><span class="label" :class="escalaGlobal(Math.round(c.notas[current.key]))">{{escalaGlobal(Math.round(c.notas[current.key]))}}</span></td>
               </tr>
             </tbody>
           </table>

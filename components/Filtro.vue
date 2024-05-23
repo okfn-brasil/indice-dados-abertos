@@ -69,7 +69,7 @@
           </div>
           <div class="content">
             <div v-if="dimensaoObj">
-              <NuxtLink :to="`/`" class="btn icon selected" :data-dimensao="dimensaoObj.label">{{dimensaoObj.label}}</NuxtLink>
+              <NuxtLink :to="{ path: '/',hash:'#avaliacao'}" class="btn icon selected" :data-dimensao="dimensaoObj.label">{{dimensaoObj.label}}</NuxtLink>
               <NuxtLink :to="`/dimensao/${dimensaoObj.slug}`" class="btn-next mb-1 mt-4" @click="toggleFilter()">analisar dimensão</NuxtLink>
               <button @click="toggleFilter('categorias')" class="btn-next">ou explorar categorias</button>
             </div>

@@ -124,9 +124,9 @@ let bases = computed(()=>{return capital.value?Object.values(capital.value.entra
       <div class="flex flex-wrap mt-12">
         <div class="w-full md:w-6/12 md:pr-12">
           <div class="dados-capital">
-            <div :class="escalaGlobal(capital.geral)">
+            <div :class="escalaGlobal(Math.round(capital.geral))">
               <p class="numero">{{capital.geral}}</p>
-              <p class="legenda">nível<br/>{{escalaGlobal(capital.geral)}}</p>
+              <p class="legenda">nível<br/>{{escalaGlobal(Math.round(capital.geral))}}</p>
             </div>
             <div class="bg-cinzaClaro">
               <p class="numero">{{Object.values(capitais).sort((a,b)=>{return b.geral-a.geral}).map(x=>x.slug).indexOf(capital_slug)+1}}ª</p>
@@ -139,7 +139,7 @@ let bases = computed(()=>{return capital.value?Object.values(capital.value.entra
           </div>
 
           <div class="mx-auto mt-6">
-            <svg width="auto" height="280px"><use :class="escalaGlobal(capital.geral)" :xlink:href="`#c${capital.key}`"></use></svg>
+            <svg width="auto" height="280px"><use :class="escalaGlobal(Math.round(capital.geral))" :xlink:href="`#c${capital.key}`"></use></svg>
           </div>
 
           <!-- legenda -->
@@ -180,7 +180,7 @@ let bases = computed(()=>{return capital.value?Object.values(capital.value.entra
               <tr v-for="d in conjuntos">
                 <td class="capital icon" :data-dimensao="d.label"><span>{{d.label}}</span></td>
                 <td class="pontuacao">{{Math.round(capital.notas[d.key])}}</td>
-                <td class="nivel"><span class="label" :class="escalaGlobal(capital.notas[d.key])">{{escalaGlobal(capital.notas[d.key])}}</span></td>
+                <td class="nivel"><span class="label" :class="escalaGlobal(Math.round(capital.notas[d.key]))">{{escalaGlobal(Math.round(capital.notas[d.key]))}}</span></td>
               </tr>
             </tbody>
           </table>

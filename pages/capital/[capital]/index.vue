@@ -7,7 +7,7 @@ let capital_slug = ref(route.params.capital);
 	<main>
 		<TabelaMapaCapital :capital="capital_slug" class="pt-11"/>
 		<TabelaCapital/>
-    	<Participe/>
+    	<ParticipeCall/>
 	</main>
   	<Footer/>
 </template>

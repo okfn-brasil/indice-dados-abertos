@@ -24,8 +24,8 @@
           <ul class="links">
               <li><NuxtLink to="/#ranking">Ranking capitais</NuxtLink></li>
               <li><NuxtLink to="/#metodologia">Metodologia</NuxtLink></li>
-              <li><NuxtLink to="/#publicacao">Publicação</NuxtLink></li>
-              <li><NuxtLink to="/#clipping">Clipping</NuxtLink></li>
+              <li><a :href="'https://go.ok.org.br/odi2023-relatorio'" target="blank">Publicação</a></li>
+              <li><NuxtLink to="/#noticias">Notícias</NuxtLink></li>
               <li><NuxtLink to="/participe">Participe!</NuxtLink></li>
               <li><NuxtLink to="/sobre">Sobre</NuxtLink></li>
               <li class="search">
@@ -41,3 +41,4 @@
   </header>
 
 </template>
+

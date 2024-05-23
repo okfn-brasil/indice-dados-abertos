@@ -20,11 +20,11 @@
         <p class="capital">{{tooltip.capital.nome}}</p>
         <template v-if="tooltip.d">
           <p class="ranking icon block" :data-dimensao="tooltip.d.label">{{tooltip.d.label}}</p>
-          <p class="label" :class="escalaGlobal(tooltip.capital.notas[tooltip.d.key])">{{Math.round(tooltip.capital.notas[tooltip.d.key])}}</p>
+          <p class="label" :class="escalaGlobal(Math.round(tooltip.capital.notas[tooltip.d.key]))">{{Math.round(tooltip.capital.notas[tooltip.d.key])}}</p>
         </template>
         <template v-if="tooltip.ranking">
           <p class="ranking" v-if="tooltip.ranking">{{tooltip.ranking}}ª posição no ranking</p>
-          <p class="label" :class="escalaGlobal(tooltip.capital.geral)">{{tooltip.capital.geral}}</p>
+          <p class="label" :class="escalaGlobal(Math.round(tooltip.capital.geral))">{{Math.round(tooltip.capital.geral)}}</p>
         </template>
         <button class="btn-tooltip">explorar capital</button>
       </template>
@@ -52,8 +52,8 @@
               <tr v-for="(c, index) in Object.values(capitais).sort((a,b)=>{return b.geral-a.geral})">
                 <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="capital"><span><b>{{index+1}}º</b> {{c.nome}}</span></td>
                 <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="pontuacao"><span>{{c.geral}}</span></td>
-                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="nivel"><span class="label" :class="escalaGlobal(c.geral)">{{escalaGlobal(c.geral)}}</span></td>
-                <td class="dimensao" v-for="d in conjuntos" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,d:d})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }"><span class="label" :class="escalaGlobal(c.notas[d.key])">{{Math.round(c.notas[d.key])}}</span></td>
+                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="nivel"><span class="label" :class="escalaGlobal(Math.round(c.geral))">{{escalaGlobal(Math.round(c.geral))}}</span></td>
+                <td class="dimensao" v-for="d in conjuntos" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,d:d})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }"><span class="label" :class="escalaGlobal(Math.round(c.notas[d.key]))">{{Math.round(c.notas[d.key])}}</span></td>
               </tr>
             </tbody>
           </table>

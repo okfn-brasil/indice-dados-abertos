@@ -61,7 +61,7 @@
     <!-- <template v-if="ob.ranking[1]">
       <p class="ranking" v-if="ob.ranking[1]">{{ob.ranking[1]}}ª posição no ranking</p>
     </template>  -->
-    <p class="label" :class="escalaGlobal(tooltip.nota)">{{escalaGlobal(tooltip.nota)}}</p>
+    <p class="label" :class="escalaGlobal(Math.round(tooltip.nota))">{{escalaGlobal(Math.round(tooltip.nota))}}</p>
     <button class="btn-tooltip">explorar capital</button>
   </div>
   <div class="mapa">
@@ -73,7 +73,7 @@
             mouseleave: ()=>{tip(false)}, 
             click:()=>{navigateTo('/capital/'+capitais[t.id].slug)} 
           }" 
-          :class="ob[t.id] && escalaGlobal(ob[t.id].nota)" 
+          :class="ob[t.id] && escalaGlobal(Math.round(ob[t.id].nota))" 
           :data-capital="t.id" fill="#f3f3f3" stroke="white" :d="t.d"
         />
         <circle v-for="t in traces" :key="t.id"  :data-capital="t.id" fill="#000000" stroke="#FFFFFF" stroke-width="1" r="5" :cx="t.x" :cy="t.y" />

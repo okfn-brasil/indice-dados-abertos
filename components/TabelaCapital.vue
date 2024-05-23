@@ -2,17 +2,46 @@
 const route = useRoute()
 let capital_slug = ref(route.params.capital);
 let capital = computed(()=>{return capital_slug.value ? filterByValue(capitais,'slug',capital_slug.value):false;});
-let active = ref(conjuntos[1])
+let active = ref(conjuntos[1]);
 
+const tooltip = ref(false);
+ const tipPos = ref({x:0,y:0});
+ const tip = (e,d)=>{
+  tooltip.value = d ? d : false;
+  tipM(e);
+ }
+ const tipM = (e)=>{
+  tipPos.value = {x:e.x, y:e.y}
+ }
 
 </script>
 <template>
 
   <section class="bg-cinzaClaro" id="avaliacao">
+
+    <div class="tooltip" v-if="tooltip" :style="{left: tipPos.x+'px', top: tipPos.y+'px'}">
+
+      <div v-if="tooltip.indicador">
+          <p class="ranking">{{tooltipIndicador(tooltip.indicador)}}</p>
+      </div>
+
+      <div v-else-if="tooltip.dimensao">
+        <p class="icon big" :data-dimensao="tooltip.dimensao.label">{{tooltip.dimensao.label}}</p>
+        <p v-if="!tooltip.dimensao.score" class="t13 mt-2">Este conjunto de dados não integra a pontuação do Índice nesta edição.</p>
+        <button class="btn-tooltip">explorar dimensão</button>
+      </div>
+
+      <div v-else-if="!tooltip.d.score" >
+          <p class="ranking">Este conjunto de dados não integra a pontuação do Índice nesta edição.</p>
+          <button class="btn-tooltip big">saiba mais na nota metodológica</button>
+      </div>
+    
+    </div>
+
     <div class="container-fluid wrap">
 
       <ul class="icons-tab">
-        <li class="icon" v-for="c in conjuntos" :class="{'active':c.key==active.key}" :data-dimensao="c.label" @click="active=c">{{c.label}}</li>
+        <li class="icon" v-for="c in conjuntos" :class="{'active':c.key==active.key}" :data-dimensao="c.label" v-on="{ mouseenter: (e)=>{tip(e,{dimensao:c})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{active=c} }">{{c.label}}</li>
       </ul>
 
       <div v-for="c in [active]">
@@ -28,7 +57,7 @@ let active = ref(conjuntos[1])
             <h4>{{cat.key}} {{cat.label}}</h4>
             <div>
               <p class="pontuacao">{{Math.round(capital.notas[c.key])}}</p>
-              <span class="label" :class="escalaGlobal(capital.notas[c.key])">{{escalaGlobal(capital.notas[c.key])}}</span>
+              <span class="label" :class="escalaGlobal(Math.round(capital.notas[c.key]))">{{escalaGlobal(Math.round(capital.notas[c.key]))}}</span>
             </div>
           </div>
           <table class="tabela tabela-capital" id="tabelamapa">
@@ -44,29 +73,16 @@ let active = ref(conjuntos[1])
               </tr>
               <tr>
                 <th></th>
-                <th class="sub-heading">
-                  <span>I1</span>
-                  <div class="tooltip">
-                    <p class="conjunto">I1</p>
-                    <p class="descricao">Os registros dos conjuntos de dados estão geolocalizados?</p>
-                  </div>
-                </th>
-                <th class="sub-heading">I2</th>
-                <th class="sub-heading">I3</th>
-                <th class="sub-heading">I4</th>
-                <th class="sub-heading">I5</th>
-                <th class="sub-heading">I6</th>
-                <th class="sub-heading">I7</th>
-                <th class="sub-heading">I8</th>
-                <th class="sub-heading">I9</th>
-                <th class="sub-heading">I10</th>
-                <th class="sub-heading">I11</th>
+                <th class="sub-heading" v-for="i in 11" v-on="{ mouseenter: (e)=>{tip(e,{indicador: 'i' + i })}, mousemove:tipM, mouseleave: ()=>{tip(false)} }">I{{ i }}</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="con in cat.children">
                 
-                <td class="item" :class="{'excluir':!con.score}">{{con.key}} {{con.label}}</td>
+                <td class="item" v-on="!con.score ? { mouseenter: (e) => { tip(e, { d: con }) }, mousemove: tipM, mouseleave: () => { tip(false) }, } : {}">
+                  <a class="w-full" :class="{'excluir':!con.score}" v-if="!con.score" :href="'https://go.ok.org.br/odi2023-nota'" target="blank">{{con.key}} {{con.label}}</a>
+                  <span v-else>{{con.key}} {{con.label}}</span>
+                </td>
 
                 <td class="indicador" :class="escalaForm(capital.entradas[con.key]['i1'])"></td>
                 <td class="indicador" :class="escalaForm(capital.entradas[con.key]['i2'])"></td>
@@ -80,7 +96,7 @@ let active = ref(conjuntos[1])
                 <td class="indicador" :class="escalaForm(capital.entradas[con.key]['i10'])"></td>
                 <td class="indicador" :class="escalaForm(capital.entradas[con.key]['i11'])"></td>
                 <td class="pontuacao">{{Math.round(capital.notas[con.key])}}</td>
-                <td class="nivel"><span class="label" :class="escalaGlobal(capital.notas[con.key])">{{escalaGlobal(capital.notas[con.key])}}</span></td>
+                <td class="nivel"><span class="label" :class="escalaGlobal(Math.round(capital.notas[con.key]))">{{escalaGlobal(Math.round(capital.notas[con.key]))}}</span></td>
               </tr>
             </tbody>
           </table>
@@ -91,7 +107,7 @@ let active = ref(conjuntos[1])
             <h4>{{c.key}} {{c.label}}</h4>
             <div>
               <p class="pontuacao">{{Math.round(capital.notas[c.key])}}</p>
-              <span class="label" :class="escalaGlobal(capital.notas[c.key])">{{escalaGlobal(capital.notas[c.key])}}</span>
+              <span class="label" :class="escalaGlobal(Math.round(capital.notas[c.key]))">{{escalaGlobal(Math.round(capital.notas[c.key]))}}</span>
             </div>
           </div>
           <table class="tabela tabela-capital" id="tabelamapa">
@@ -100,16 +116,7 @@ let active = ref(conjuntos[1])
                 <th class="pre-heading" colspan="10">Instrumentos de gestão e planejamento</th>
               </tr>
               <tr>
-                <th class="sub-heading">G1</th>
-                <th class="sub-heading">G2</th>
-                <th class="sub-heading">G3</th>
-                <th class="sub-heading">G4</th>
-                <th class="sub-heading">G5</th>
-                <th class="sub-heading">G6</th>
-                <th class="sub-heading">G7</th>
-                <th class="sub-heading">G8</th>
-                <th class="sub-heading">G9</th>
-                <th class="sub-heading">G10</th>
+                <th class="sub-heading" v-for="i in 10" v-on="{ mouseenter: (e)=>{tip(e,{indicador: 'g' + i })}, mousemove:tipM, mouseleave: ()=>{tip(false)} }">G{{ i }}</th>
               </tr>
             </thead>
             <tbody>

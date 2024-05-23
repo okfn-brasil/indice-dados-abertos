@@ -97,7 +97,7 @@
               v-on="{click:()=>{navigateTo('/capital/'+c.slug)}}" :data-capital="c.key" class="hoverable">
                 <td class="capital"><b>{{index+1}}º</b> {{c.nome}}</td>
                 <td class="pontuacao">{{c.geral}}</td>
-                <td class="nivel"><span class="label" :class="escalaGlobal(c.geral)">{{escalaGlobal(c.geral)}}</span></td>
+                <td class="nivel"><span class="label" :class="escalaGlobal(Math.round(c.geral))">{{escalaGlobal(Math.round(c.geral))}}</span></td>
               </tr>
             </tbody>
           </table>

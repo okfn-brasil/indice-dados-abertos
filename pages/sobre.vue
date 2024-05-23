@@ -14,7 +14,7 @@
           <p>Além disso, o ODI Cidades 2023 também inova ao apresentar uma nova dimensão: em <b>governança de dados públicos</b>, as políticas de dados dos municípios são analisadas, atentando-se a aspectos relativos à proteção de dados.</p>
           <p>Por ser aplicado a todas as capitais, o Índice possibilita a formação de uma “linha de base” para as gestões municipais, e passará a ser monitorado periodicamente, para que seja possível captar a evolução na abertura de dados.</p>
           <p>Atualmente, não existe no Brasil uma política nacional de dados que estabeleça um conjunto mínimo de bases de dados importantes para o acompanhamento de políticas públicas nas cidades brasileiras — ausência que torna essa nova metodologia ainda mais necessária. Considerando sua abrangência nacional e temática, o novo ODI Cidades 2023 será um <b>estudo inédito</b>, capaz de pautar a abertura de dados em nível local, orientar os mandatos atuais e influenciar as discussões sobre o tema em programas de governo, principalmente nas eleições municipais de 2024. Esperamos que sirva de linha mestra para que as gestões desenvolvam políticas de abertura mais abrangentes, duradouras e conectadas ao direito fundamental à cidade.</p>
-          <img src="~/assets/images/sobre.png" />
+          <img src="~/assets/images/sobre.svg" />
         </div>
         <div class="header-internas pt-6">
           <h2><span class="text-preto font-light">Sobre a</span> Open Knowledge Brasil</h2>
