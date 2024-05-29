@@ -423,13 +423,13 @@ section:not(.hero){
     @apply rounded inline-block t11 uppercase font-black text-center py-1 leading-none;
     &.alto{@apply bg-verde;}
     &.bom{@apply bg-verdeClaro;}
-    &.medio{@apply bg-bege;}
+    &.médio{@apply bg-bege;}
     &.baixo{@apply bg-rosaClaro;}
     &.opaco{@apply bg-rosa;}
 }
 .alto{@apply bg-verde fill-verde;}
 .bom{@apply bg-verdeClaro fill-verdeClaro;}
-.medio{@apply bg-bege fill-bege;}
+.médio{@apply bg-bege fill-bege;}
 .baixo{@apply bg-rosaClaro fill-rosaClaro;}
 .opaco{@apply bg-rosa fill-rosa;}
 
@@ -962,7 +962,7 @@ section:not(.hero){
                         @apply border border-solid;
                         &.alto{@apply border-verde; background-color: #C9E8E1;}
                         &.bom{@apply border-verdeClaro; background-color: #DCEBE6;}
-                        &.medio{@apply border-bege; background-color: #F0EEEC;}
+                        &.médio{@apply border-bege; background-color: #F0EEEC;}
                         &.baixo{@apply border-rosaClaro; background-color:#EEE3E5;}
                         &.opaco{@apply border-rosa;background-color: #EDD9DE;}
                     }
