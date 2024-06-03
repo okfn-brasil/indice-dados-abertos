@@ -99,7 +99,7 @@ onMounted(() => {
           </template>
           <template v-if="tooltip.ranking">
             <p class="ranking" v-if="tooltip.ranking">{{tooltip.ranking}}ª posição no ranking</p>
-            <p class="label" :class="escalaGlobal(Math.round(tooltip.capital[current.key]))">{{Math.round(tooltip.capital[current.key])}}</p>
+            <p class="label" :class="escalaGlobal(Math.round(tooltip.capital.notas[current.key]))">{{Math.round(tooltip.capital.notas[current.key])}}</p>
           </template>
           <button class="btn-tooltip">explorar capital</button>
         </template>
@@ -133,20 +133,20 @@ onMounted(() => {
             </thead>
             <tbody>
               <tr v-for="(c, index) in Object.values(capitais).sort((a,b)=>{return b.notas[current.key]-a.notas[current.key]})">
-                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="capital"><span><b>{{index+1}}º</b> {{c.nome}}</span></td>
-                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="pontuacao"><span>{{Math.round(c.notas[current.key])}}</span></td>
-                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="nivel"><span class="label" :class="escalaGlobal(Math.round(c.notas[current.key]))">{{escalaGlobal(Math.round(c.notas[current.key]))}}</span></td>
-                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i1'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
-                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i2'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
-                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i3'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
-                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i4'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
-                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i5'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
-                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i6'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
-                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i7'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
-                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i8'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
-                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i9'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
-                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i10'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
-                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i11'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
+                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="capital"><span><b>{{index+1}}º</b> {{c.nome}}</span></td>
+                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="pontuacao"><span>{{Math.round(c.notas[current.key])}}</span></td>
+                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="nivel"><span class="label" :class="escalaGlobal(Math.round(c.notas[current.key]))">{{escalaGlobal(Math.round(c.notas[current.key]))}}</span></td>
+                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i1'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
+                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i1']=='Não'?'NL':c.entradas[current.key]['i2'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
+                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i1']=='Não'?'NL':c.entradas[current.key]['i3'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
+                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i1']=='Não'?'NL':c.entradas[current.key]['i4'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
+                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i1']=='Não'?'NL':c.entradas[current.key]['i5'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
+                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i1']=='Não'?'NL':c.entradas[current.key]['i6'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
+                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i1']=='Não'?'NL':c.entradas[current.key]['i7'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
+                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i1']=='Não'?'NL':c.entradas[current.key]['i8'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
+                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i1']=='Não'?'NL':c.entradas[current.key]['i9'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
+                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i1']=='Não'?'NL':c.entradas[current.key]['i10'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
+                <td class="indicador" :class="escalaForm(c.entradas[current.key]['i1']=='Não'?'NL':c.entradas[current.key]['i11'])" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }">&nbsp;</td>
               </tr>
             </tbody>
           </table>

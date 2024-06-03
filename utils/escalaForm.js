@@ -5,7 +5,9 @@ export default function (v){
    return "nao";
  }else if(v=="NA"){
    return "nao-aplicado";
- }else{
+ }else if(v=="NL"){
+  return "nao-localizado"
+  }else{
   return "nao-localizado"
  }
 }

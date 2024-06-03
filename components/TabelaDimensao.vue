@@ -129,9 +129,9 @@ onMounted(() => {
             </thead>
             <tbody v-if="current">
               <tr v-for="(c, index) in Object.values(capitais).sort((a,b)=>{return b.notas[current.key]-a.notas[current.key]})" :data-capital="c.key" class="hoverable">
-                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="capital"><span><b>{{index+1}}º</b> {{c.nome}}</span></td>
-                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="pontuacao"><span>{{Math.round(c.notas[current.key])}}</span></td>
-                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="nivel"><span class="label" :class="escalaGlobal(Math.round(c.notas[current.key]))">{{escalaGlobal(Math.round(c.notas[current.key]))}}</span></td>
+                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="capital"><span><b>{{index+1}}º</b> {{c.nome}}</span></td>
+                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="pontuacao"><span>{{Math.round(c.notas[current.key])}}</span></td>
+                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="nivel"><span class="label" :class="escalaGlobal(Math.round(c.notas[current.key]))">{{escalaGlobal(Math.round(c.notas[current.key]))}}</span></td>
                 
                 <td class="dimensao" v-for="d in current.children" :class="{'excluir':!d.score}" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,d:d})}, mousemove:tipM, mouseleave: ()=>{tip(false)} }"><span class="label" :class="escalaGlobal(Math.round(c.notas[d.key]))">{{Math.round(c.notas[d.key])}}</span></td>
               

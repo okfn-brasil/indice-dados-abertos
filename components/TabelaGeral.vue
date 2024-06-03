@@ -50,9 +50,9 @@
             </thead>
             <tbody>
               <tr v-for="(c, index) in Object.values(capitais).sort((a,b)=>{return b.geral-a.geral})">
-                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="capital"><span><b>{{index+1}}º</b> {{c.nome}}</span></td>
-                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="pontuacao"><span>{{c.geral}}</span></td>
-                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="nivel"><span class="label" :class="escalaGlobal(Math.round(c.geral))">{{escalaGlobal(Math.round(c.geral))}}</span></td>
+                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="capital"><span><b>{{index+1}}º</b> {{c.nome}}</span></td>
+                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="pontuacao"><span>{{c.geral}}</span></td>
+                <td v-on="{ mouseenter: (e)=>{tip(e,{capital:c,ranking:index+1})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }" class="nivel"><span class="label" :class="escalaGlobal(Math.round(c.geral))">{{escalaGlobal(Math.round(c.geral))}}</span></td>
                 <td class="dimensao" v-for="d in conjuntos" v-on="{ mouseenter: (e)=>{tip(e,{capital:c,d:d})}, mousemove:tipM, mouseleave: ()=>{tip(false)}, click:()=>{navigateTo('/capital/'+c.slug)} }"><span class="label" :class="escalaGlobal(Math.round(c.notas[d.key]))">{{Math.round(c.notas[d.key])}}</span></td>
               </tr>
             </tbody>
