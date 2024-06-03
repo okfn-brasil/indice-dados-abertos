@@ -4,7 +4,7 @@ export default function (v){
  }else if(v>60){
    return "bom";
  }else if(v>40){
-   return "medio";
+   return "médio";
  }else if(v>20){
    return "baixo";
  }else if(v>=0){
