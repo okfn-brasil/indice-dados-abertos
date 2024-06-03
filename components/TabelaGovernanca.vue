@@ -118,7 +118,7 @@ onMounted(() => {
                 <th class="capital" rowspan="2">Município</th>
                 <th class="pontuacao" rowspan="2">Pontuação</th>
                 <th class="nivel" rowspan="2">Nível</th>
-                <th class="pre-heading" colspan="10">Acesso</th>
+                <th class="pre-heading" colspan="10">Instrumentos de gestão e planejamento</th>
               </tr>
               <tr>
                 <th class="sub-heading" v-for="i in 10" v-on="{ mouseenter: (e)=>{tip(e,{indicador: 'g' + i })}, mousemove:tipM, mouseleave: ()=>{tip(false)} }">G{{ i }}</th>

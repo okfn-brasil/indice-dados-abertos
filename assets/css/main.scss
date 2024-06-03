@@ -709,9 +709,12 @@ section:not(.hero){
         @apply block mb-4 md:mb-0 flex-1 bg-branco;
         @media(min-width:992px){max-width:25%;}
         div{
-            @apply py-6 px-7;
+            @apply py-4 px-5;
         }
-        p{
+        .date{
+            @apply font-hkgrotesk font-light t13 pb-2 uppercase;
+        }
+        .title{
             @apply t18 font-medium;
         }
         figure{

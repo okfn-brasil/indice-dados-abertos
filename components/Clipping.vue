@@ -8,7 +8,8 @@
             <img v-if="post.ACF.imagem.url && post.ACF.imagem.url" :src="post.ACF.imagem.url" />
           </figure>
           <div>
-            <p>{{ post.title.rendered }}</p>
+            <p class="date"> {{ formatDate(post.date) }}</p>
+            <p class="title">{{ post.title.rendered }}</p>
           </div>
         </a>
       </div>
@@ -30,6 +31,16 @@
         this.posts = data; 
       } catch (error) {
         console.error('Error fetching posts:', error);
+      }
+    },
+    methods: {
+      formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = date.toLocaleDateString('pt-BR',  {month: 'short' }).replace('.', '');
+        const year = date.getFullYear();
+
+        return `${day} ${month} de ${year}`;
       }
     }
   };
