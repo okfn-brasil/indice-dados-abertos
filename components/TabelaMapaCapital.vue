@@ -150,7 +150,7 @@ let bases = computed(()=>{return capital.value?Object.values(capital.value.entra
             </div>
             <div class="text-center">
               <div class="bg-rosaClaro p-1 mb-1 rounded">baixo</div>
-              <div>1 - 40</div>
+              <div>21 - 40</div>
             </div>
             <div class="text-center">
               <div class="bg-bege p-1 mb-1 rounded">médio</div>
