@@ -129,7 +129,7 @@ let bases = computed(()=>{return capital.value?Object.values(capital.value.entra
               <p class="legenda">nível<br/>{{escalaGlobal(Math.round(capital.geral))}}</p>
             </div>
             <div class="bg-cinzaClaro">
-              <p class="numero">{{Object.values(capitais).sort((a,b)=>{return b.geral-a.geral}).map(x=>x.slug).indexOf(capital_slug)+1}}ª</p>
+              <p class="numero">{{sortDim(Object.values(capitais),'geral').map(x=>x.slug).indexOf(capital_slug)+1}}ª</p>
               <p class="legenda">posição no ranking</p>
             </div>
             <div v-if="bases" class="bg-cinzaClaro">
