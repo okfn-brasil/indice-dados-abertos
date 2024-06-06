@@ -16,6 +16,7 @@
     "autoprefixer": "^10.4.16",
     "cssnano": "^6.0.1",
     "nuxt": "^3.8.1",
+    "nuxt-gtag": "^2.0.6",
     "postcss": "^8.4.31",
     "postcss-preset-env": "^9.3.0",
     "request": "^2.88.2",
