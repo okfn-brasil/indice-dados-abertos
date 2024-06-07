@@ -2,7 +2,10 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/main.scss"],
-  modules: [],
+  modules: ["nuxt-gtag"],
+  gtag: {
+    id: 'G-MF4V58C2KM'
+  },
   postcss: {
     plugins: {
       "postcss-import": {},
