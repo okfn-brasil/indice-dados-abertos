@@ -116,7 +116,7 @@
               <p class="short">{{conjunto_de_dadosObj.label}}</p> 
             </template>
             <template v-else>
-              <p class="full">Todas os conjuntos de dados</p> 
+              <p class="full">Todos os conjuntos de dados</p> 
               <p class="short">Conjuntos de dados</p> 
             </template>
             <span class="line"></span>
