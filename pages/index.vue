@@ -1,67 +1,62 @@
-<template>
-  <Header/>
+<script setup>
+useHead({
+  title: 'Índice de Dados Abertos ODI',
+  meta: [
+    { name: 'description', content: 'Avaliação da disponibilidade e da qualidade dos dados abertos nas capitais e nos estados brasileiros, a partir de uma perspectiva cidadã.' },
+  ],
+})
+</script>
 
-  <!-- Filtro -->
-  <Filtro/>
+<template>
+  <HeaderHome/>
 
   <main>
-
     <!-- Hero -->
     <section class="hero">
       <div class="container-fluid wrap">
-        <div class="w-full md:w-5/12">
-          <p class="font-extralight text-branco t70 leading-tight">
-            Índice de Dados Abertos para Cidades
-            <span class="font-bold text-verde block">ODI 2023</span>
+        <div class="w-full md:w-6/12">
+          <h1 class="font-extralight text-branco t70 leading-tight">
+            Índice de<br>Dados <span class="font-normal">Abertos</span><br>
+            <strong class="font-bold">ODI</strong>
+          </h1>
+          <p class="text-branco font-extralight mt-2 max-w-[34rem]">
+            A nossa avaliação mudou. Além de abranger as <strong class="font-semibold">capitais brasileiras</strong>
+            em ranking realizado em 2023, a metodologia foi reformulada em 2026 e a avaliação também passou a
+            abordar a disponibilidade e a qualidade dos dados abertos nos <strong class="font-semibold">estados brasileiros</strong>
+            a partir de uma perspectiva cidadã.
           </p>
-          <p class="text-branco font-extralight mt-1">
-            Uma avaliação sobre a disponibilidade e a qualidade dos dados
-            abertos nas capitais brasileiras a partir de uma perspectiva cívica.
-          </p>
-          <div class="w-full md:hidden">
-            <a href="https://go.ok.org.br/odi2023-relatorio" target="blank" class="btn download mt-4">Baixe a publicação</a>
+
+          <!-- Chamada: seta + texto verde + botões na mesma linha, como no Figma -->
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-3 mt-8">
+            <svg class="text-verde shrink-0" width="32" height="12" viewBox="0 0 32 12" fill="none" aria-hidden="true">
+              <path d="M0 6H31M26 1l5 5-5 5" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+            <p class="font-necto text-verde uppercase t16 font-light tracking-wide">Escolha o que acessar:</p>
+            <NuxtLink to="/cidades" class="btn uppercase whitespace-nowrap !text-[13px] !px-3 !py-2 !leading-none">ODI Cidades</NuxtLink>
+            <NuxtLink to="/estados" class="btn uppercase whitespace-nowrap !text-[13px] !px-3 !py-2 !leading-none">ODI Estados</NuxtLink>
           </div>
-
-          <a @click="scrollto('avaliacao')" class="btn-arrow mt-6 mb-4 md:mt-8">Explore os resultados</a>
-          <div id="avaliacao"></div>
-
         </div>
-        <div class="w-full md:w-7/12 md:pl-8 pb-8 flex flex-col items-center">
-            <div class="hero-img w-full">
-              <div class="border-mobile"></div>
-              <div class="image-wrapper">
-                <img class="buildings" src="~/assets/images/hero.svg" />
-                <img class="gradient gradient-1" src="~/assets/images/circle_green_small.png" />
-                <img class="gradient gradient-2" src="~/assets/images/circle_pink_small.png" />
-                <img class="gradient gradient-3" src="~/assets/images/circle_pink_big.png" />
-                <img class="gradient gradient-4" src="~/assets/images/rectangle_green.png" />
-                <img class="gradient gradient-5" src="~/assets/images/circle_pink_small.png" />
-                <img class="gradient gradient-6" src="~/assets/images/circle_green_small.png" />
-              </div>
+
+        <div class="w-full md:w-6/12 md:pl-8 pb-8 flex flex-col items-center">
+          <!-- mesma ilustração/degradês da home atual; trocar quando houver a arte nova -->
+          <div class="hero-img w-full">
+            <div class="border-mobile"></div>
+            <div class="image-wrapper">
+              <img class="buildings" src="~/assets/images/hero.svg" alt="" />
+              <img class="gradient gradient-1" src="~/assets/images/circle_green_small.png" alt="" />
+              <img class="gradient gradient-2" src="~/assets/images/circle_pink_small.png" alt="" />
+              <img class="gradient gradient-3" src="~/assets/images/circle_pink_big.png" alt="" />
+              <img class="gradient gradient-4" src="~/assets/images/rectangle_green.png" alt="" />
+              <img class="gradient gradient-5" src="~/assets/images/circle_pink_small.png" alt="" />
+              <img class="gradient gradient-6" src="~/assets/images/circle_green_small.png" alt="" />
             </div>
-
-
-          <a href="https://go.ok.org.br/odi2023-relatorio" target="blank" class="btn download mt-8 !hidden md:!inline-block">Baixe a publicação</a>
+          </div>
         </div>
       </div>
-
     </section>
 
-    <!-- Tabela Mapa -->
-    <TabelaMapa/>
-
-    <!-- Tabela geral -->
-    <TabelaGeral/>
-
-    <ComoFunciona />
-
-    <!-- Clipping -->
-    <Clipping/>
-
-    <!-- Participe -->
-    <ParticipeCall/>
-
+    <ParticipeHome/>
   </main>
 
-  <Footer/>
+  <FooterHome/>
 </template>
